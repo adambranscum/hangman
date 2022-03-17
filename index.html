@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hangman</title>
+<script src="js.js"></script>
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="css/hover.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<script>
+	
+	$(document).ready(function() {		
+			$("#header").addClass("animate__animated animate__lightSpeedInLeft");
+		    $("#keyboard").addClass("animate__animated animate__jackInTheBox");
+			$("#game").addClass("animate__animated animate__fadeIn");
+  });		
+		
+	
+	</script>
+<body class="flex-column d-flex min-vh-100 bg-info">
+<div class="container mt-auto mb-auto">
+<FORM NAME="f">
+
+  <h1 id="header" class="bg-white text-center p-4 dropshadow mb-4">Hangman Game</h1>
+
+<div id="game" class="row">
+  <div class="col-12 col-lg-4 text-center">
+   <h1 class="text-white">Score : <INPUT class="form-control dropshadow" TYPE=TEXT NAME="score" VALUE="0" onfocus="score.blur();"></h1>
+   <BR>
+   <h1 class="text-white">Fails (6): <INPUT class="form-control dropshadow" TYPE=TEXT NAME="lives" VALUE="0" onfocus="lives.blur();"></h1>  
+  </div>
+  <div class="col-12 col-lg-4 text-center">
+   <h1 class="text-white">The word is...<INPUT class="form-control dropshadow" TYPE=TEXT NAME="word" VALUE="    --- Hangman ---" onfocus="word.blur();"></h1>
+    <BR>
+   <h1 class="text-white">Word Bank<INPUT class="form-control dropshadow" TYPE=TEXT NAME="tried" VALUE="Click GO to get a word." onfocus="tried.blur();"></h1>  
+  </div>
+  <div class="col-12 col-lg-4 text-center mb-auto mt-auto">
+   <INPUT class="dropshadow btn btn-danger btn-lg" TYPE=BUTTON onclick="new_word(this.form);" VALUE="Click Here to Begin!">  
+  </div>
+</div>
+		
+<div id="keyboard" class="row bg-white mt-4 p-3 dropshadow rounded-3">
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" A "   onclick="seek('A');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" B "   onclick="seek('B');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" C "   onclick="seek('C');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" D "   onclick="seek('D');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" E "   onclick="seek('E');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" F "   onclick="seek('F');"></div> 
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" G "   onclick="seek('G');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" H "   onclick="seek('H');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" I " onclick="seek('I');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" J "  onclick="seek('J');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" K "   onclick="seek('K');"></div>
+ <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON  VALUE=" L "  onclick="seek('L');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" M "   onclick="seek('M');"></div>
+
+
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" N "   onclick="seek('N');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" O "   onclick="seek('O');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" P "   onclick="seek('P');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" Q "   onclick="seek('Q');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" R "   onclick="seek('R');"></div>
+ <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON  VALUE=" S "   onclick="seek('S');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" T "   onclick="seek('T');"></div>
+ <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON  VALUE=" U "   onclick="seek('U');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" V "   onclick="seek('V');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" W "   onclick="seek('W');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" X "  onclick="seek('X');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" Y "   onclick="seek('Y');"></div>
+  <div class="col-2 col-lg-1 mb-2"><INPUT class="btn btn-danger dropshadow btn-lg" TYPE=BUTTON VALUE=" Z "  onclick="seek('Z');"></div>
+	  </div>
+
+
+</FORM>
+	  </div>
+	 
+</body>
+</html>
